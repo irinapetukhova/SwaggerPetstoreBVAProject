@@ -1,7 +1,7 @@
 # SwaggerPetstoreBVAProject
 Применение техники анализа граничных значений для тестирования API.
 
-Работа содержит файлы: 
+Работа содержит файлы:<br />
 Swagger Petstore BVA Project.postman_collection.json<br />
 Отчет.docx<br />
 Таблица с тестовыми данными.xlsx<br />
