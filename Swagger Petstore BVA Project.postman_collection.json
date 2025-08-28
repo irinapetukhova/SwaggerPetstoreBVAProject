@@ -1,0 +1,1210 @@
+{
+	"info": {
+		"_postman_id": "0b1cec3a-82e2-4beb-b425-257dabded396",
+		"name": "Swagger Petstore BVA Project",
+		"description": "Применение техники анализа граничных значений для тестирования API\n\nТестирование API для создания и обновления данных питомца в  \nPetstore с примением техники анализа граничных значений к полям запросов.\n\nПетухова Ирина Сергеевна\n\nПочта: irinapetukhova555@gmail.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44532346"
+	},
+	"item": [
+		{
+			"name": "pet",
+			"item": [
+				{
+					"name": "Add a new pet to the store",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"string\"\r\n  },\r\n  \"name\": \"doggie\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"string\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/pet",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pet"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Id c минимально допустимым значением",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 1,\r\n  \"category\": {\r\n    \"id\": 11,\r\n    \"name\": \"string\"\r\n  },\r\n  \"name\": \"doggie\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 11,\r\n      \"name\": \"string\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pet",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pet"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 21 Aug 2025 16:27:22 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, DELETE, PUT"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, api_key, Authorization"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.2.9.v20150224)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"category\": {\n        \"id\": 11,\n        \"name\": \"string\"\n    },\n    \"name\": \"doggie\",\n    \"photoUrls\": [\n        \"string\"\n    ],\n    \"tags\": [\n        {\n            \"id\": 11,\n            \"name\": \"string\"\n        }\n    ],\n    \"status\": \"available\"\n}"
+						},
+						{
+							"name": "Id на границе - 1 от допустимого",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 0,\r\n  \"category\": {\r\n    \"id\": 1,\r\n    \"name\": \"string\"\r\n  },\r\n  \"name\": \"doggie\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 1,\r\n      \"name\": \"string\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pet",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pet"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 21 Aug 2025 16:34:39 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, DELETE, PUT"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, api_key, Authorization"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.2.9.v20150224)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 9223372036854775807,\n    \"category\": {\n        \"id\": 1,\n        \"name\": \"string\"\n    },\n    \"name\": \"doggie\",\n    \"photoUrls\": [\n        \"string\"\n    ],\n    \"tags\": [\n        {\n            \"id\": 1,\n            \"name\": \"string\"\n        }\n    ],\n    \"status\": \"available\"\n}"
+						},
+						{
+							"name": "Tags: id на границе + 1 от допустимого",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 2,\r\n  \"category\": {\r\n    \"id\": 12,\r\n    \"name\": \"string\"\r\n  },\r\n  \"name\": \"doggie\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 9223372036854775808,\r\n      \"name\": \"string\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pet",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pet"
+									]
+								}
+							},
+							"status": "Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 21 Aug 2025 16:35:56 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, DELETE, PUT"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, api_key, Authorization"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.2.9.v20150224)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 500,\n    \"type\": \"unknown\",\n    \"message\": \"something bad happened\"\n}"
+						},
+						{
+							"name": "Name минимальной длины",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 3,\r\n  \"category\": {\r\n    \"id\": 13,\r\n    \"name\": \"dog\"\r\n  },\r\n  \"name\": \"a\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 13,\r\n      \"name\": \"string\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pet",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pet"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 21 Aug 2025 16:36:57 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, DELETE, PUT"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, api_key, Authorization"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.2.9.v20150224)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 3,\n    \"category\": {\n        \"id\": 13,\n        \"name\": \"dog\"\n    },\n    \"name\": \"a\",\n    \"photoUrls\": [\n        \"string\"\n    ],\n    \"tags\": [\n        {\n            \"id\": 13,\n            \"name\": \"string\"\n        }\n    ],\n    \"status\": \"available\"\n}"
+						},
+						{
+							"name": "Category: name максимальной длины",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 4,\r\n  \"category\": {\r\n    \"id\": 14,\r\n    \"name\": \"Doggiedogger Doggiedogger\"\r\n  },\r\n  \"name\": \"Boby\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 14,\r\n      \"name\": \"string\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pet",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pet"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 21 Aug 2025 16:41:08 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, DELETE, PUT"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, api_key, Authorization"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.2.9.v20150224)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"category\": {\n        \"id\": 14,\n        \"name\": \"Doggiedogger Doggiedogger\"\n    },\n    \"name\": \"Boby\",\n    \"photoUrls\": [\n        \"string\"\n    ],\n    \"tags\": [\n        {\n            \"id\": 14,\n            \"name\": \"string\"\n        }\n    ],\n    \"status\": \"available\"\n}"
+						},
+						{
+							"name": "Tags: name с минимальной длиной - 1 от допустимых",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 5,\r\n  \"category\": {\r\n    \"id\": 15,\r\n    \"name\": \"parrot\"\r\n  },\r\n  \"name\": \"Tom\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 15,\r\n      \"name\": \"\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pet",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pet"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 21 Aug 2025 16:42:57 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, DELETE, PUT"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, api_key, Authorization"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.2.9.v20150224)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 5,\n    \"category\": {\n        \"id\": 15,\n        \"name\": \"parrot\"\n    },\n    \"name\": \"Tom\",\n    \"photoUrls\": [\n        \"string\"\n    ],\n    \"tags\": [\n        {\n            \"id\": 15,\n            \"name\": \"\"\n        }\n    ],\n    \"status\": \"available\"\n}"
+						},
+						{
+							"name": "Category с минимальной длиной - 1 от допустимых",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 6,\r\n  \"category\": {},\r\n  \"name\": \"Pit\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 16,\r\n      \"name\": \"lovely\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pet",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pet"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 21 Aug 2025 16:43:49 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, DELETE, PUT"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, api_key, Authorization"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.2.9.v20150224)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 6,\n    \"category\": {\n        \"id\": 0\n    },\n    \"name\": \"Pit\",\n    \"photoUrls\": [\n        \"string\"\n    ],\n    \"tags\": [\n        {\n            \"id\": 16,\n            \"name\": \"lovely\"\n        }\n    ],\n    \"status\": \"available\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update an existing pet",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"string\"\r\n  },\r\n  \"name\": \"doggie\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"string\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/pet",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pet"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Category: id c максимально допустимым значением",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 17,\r\n  \"category\": {\r\n    \"id\": 9223372036854775807,\r\n    \"name\": \"string\"\r\n  },\r\n  \"name\": \"doggie\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 17,\r\n      \"name\": \"string\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pet",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pet"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 21 Aug 2025 16:46:01 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, DELETE, PUT"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, api_key, Authorization"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.2.9.v20150224)"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"id\": 17,\n    \"category\": {\n        \"id\": 9223372036854775807,\n        \"name\": \"string\"\n    },\n    \"name\": \"doggie\",\n    \"photoUrls\": [\n        \"string\"\n    ],\n    \"tags\": [\n        {\n            \"id\": 17,\n            \"name\": \"string\"\n        }\n    ],\n    \"status\": \"available\"\n}"
+						},
+						{
+							"name": "Status c валидным значением",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 18,\r\n  \"category\": {\r\n    \"id\": 18,\r\n    \"name\": \"string\"\r\n  },\r\n  \"name\": \"doggie\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 18,\r\n      \"name\": \"string\"\r\n    }\r\n  ],\r\n  \"status\": \"sold\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pet",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pet"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 21 Aug 2025 16:49:33 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, DELETE, PUT"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, api_key, Authorization"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.2.9.v20150224)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 18,\n    \"category\": {\n        \"id\": 18,\n        \"name\": \"string\"\n    },\n    \"name\": \"doggie\",\n    \"photoUrls\": [\n        \"string\"\n    ],\n    \"tags\": [\n        {\n            \"id\": 18,\n            \"name\": \"string\"\n        }\n    ],\n    \"status\": \"sold\"\n}"
+						},
+						{
+							"name": "Status c пустым значением",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 19,\r\n  \"category\": {\r\n    \"id\": 19,\r\n    \"name\": \"cat\"\r\n  },\r\n  \"name\": \"Tommy\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 19,\r\n      \"name\": \"cute\"\r\n    }\r\n  ],\r\n  \"status\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pet",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pet"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 21 Aug 2025 16:51:50 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, DELETE, PUT"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, api_key, Authorization"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.2.9.v20150224)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 19,\n    \"category\": {\n        \"id\": 19,\n        \"name\": \"cat\"\n    },\n    \"name\": \"Tommy\",\n    \"photoUrls\": [\n        \"string\"\n    ],\n    \"tags\": [\n        {\n            \"id\": 19,\n            \"name\": \"cute\"\n        }\n    ],\n    \"status\": \"\"\n}"
+						},
+						{
+							"name": "Category с минимальным количеством элементов",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 20,\r\n  \"category\": {\r\n    \"id\": 20,\r\n    \"name\": \"bird\"\r\n  },\r\n  \"name\": \"Kesha\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 20,\r\n      \"name\": \"smart\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pet",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pet"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 21 Aug 2025 16:53:04 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, DELETE, PUT"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, api_key, Authorization"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.2.9.v20150224)"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"id\": 20,\n    \"category\": {\n        \"id\": 20,\n        \"name\": \"bird\"\n    },\n    \"name\": \"Kesha\",\n    \"photoUrls\": [\n        \"string\"\n    ],\n    \"tags\": [\n        {\n            \"id\": 20,\n            \"name\": \"smart\"\n        }\n    ],\n    \"status\": \"available\"\n}"
+						},
+						{
+							"name": "Category c большим количеством элементов",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 21,\r\n  \"category\": {\r\n    \"id\": 21,\r\n    \"name\": \"string\",\r\n    \"name1\": \"string\"\r\n  },\r\n  \"name\": \"Tosha\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 21,\r\n      \"name\": \"smart\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pet",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pet"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 21 Aug 2025 17:06:30 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, DELETE, PUT"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, api_key, Authorization"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.2.9.v20150224)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 21,\n    \"category\": {\n        \"id\": 21,\n        \"name\": \"string\"\n    },\n    \"name\": \"Tosha\",\n    \"photoUrls\": [\n        \"string\"\n    ],\n    \"tags\": [\n        {\n            \"id\": 21,\n            \"name\": \"smart\"\n        }\n    ],\n    \"status\": \"available\"\n}"
+						},
+						{
+							"name": "PhotoUrls c большим количеством элементов",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 22,\r\n  \"category\": {\r\n    \"id\": 22,\r\n    \"name\": \"string\"\r\n  },\r\n  \"name\": \"Pasha\",\r\n  \"photoUrls\": [\r\n    \"string\",\r\n    \"string\",\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 22,\r\n      \"name\": \"sad\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pet",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pet"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 21 Aug 2025 17:08:04 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, DELETE, PUT"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, api_key, Authorization"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.2.9.v20150224)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 22,\n    \"category\": {\n        \"id\": 22,\n        \"name\": \"string\"\n    },\n    \"name\": \"Pasha\",\n    \"photoUrls\": [\n        \"string\",\n        \"string\",\n        \"string\"\n    ],\n    \"tags\": [\n        {\n            \"id\": 22,\n            \"name\": \"sad\"\n        }\n    ],\n    \"status\": \"available\"\n}"
+						},
+						{
+							"name": "Tags c большим количеством элементов",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 23,\r\n  \"category\": {\r\n    \"id\": 23,\r\n    \"name\": \"string\"\r\n  },\r\n  \"name\": \"Pusha\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 23,\r\n      \"name\": \"tiny\"\r\n    },\r\n    {\r\n      \"id\": 33,\r\n      \"name\": \"little\"\r\n    },\r\n    {\r\n      \"id\": 43,\r\n      \"name\": \"short\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pet",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pet"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 21 Aug 2025 17:09:14 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, DELETE, PUT"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, api_key, Authorization"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.2.9.v20150224)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 23,\n    \"category\": {\n        \"id\": 23,\n        \"name\": \"string\"\n    },\n    \"name\": \"Pusha\",\n    \"photoUrls\": [\n        \"string\"\n    ],\n    \"tags\": [\n        {\n            \"id\": 23,\n            \"name\": \"tiny\"\n        },\n        {\n            \"id\": 33,\n            \"name\": \"little\"\n        },\n        {\n            \"id\": 43,\n            \"name\": \"short\"\n        }\n    ],\n    \"status\": \"available\"\n}"
+						},
+						{
+							"name": "Tags c минимальным количеством элементов – 1",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 24,\r\n  \"category\": {\r\n    \"id\": 24,\r\n    \"name\": \"string\"\r\n  },\r\n  \"name\": \"Kusia\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pet",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pet"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 21 Aug 2025 17:10:35 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, DELETE, PUT"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, api_key, Authorization"
+								},
+								{
+									"key": "Server",
+									"value": "Jetty(9.2.9.v20150224)"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 24,\n    \"category\": {\n        \"id\": 24,\n        \"name\": \"string\"\n    },\n    \"name\": \"Kusia\",\n    \"photoUrls\": [\n        \"string\"\n    ],\n    \"tags\": [],\n    \"status\": \"available\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"pm.test(\"Status code is 200\", function () {\r",
+					"    pm.response.to.have.status(200);\r",
+					"});\r",
+					"pm.test(\"Response time is less than 200ms\", function () {\r",
+					"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://petstore.swagger.io/v2"
+		}
+	]
+}
